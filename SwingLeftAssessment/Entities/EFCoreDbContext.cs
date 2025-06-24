@@ -6,10 +6,11 @@ namespace SwingLeftAssessment.Entities
     // EFCoreDbContext class inherits from DbContext, which is the primary class for interacting with the database using EF Core.
     public class EFCoreDbContext : DbContext
     {
-        //// Constructor that accepts DbContextOptions<EFCoreDbContext> as a parameter.
-        //public EFCoreDbContext(DbContextOptions<EFCoreDbContext> options): base(options) 
-        //{
-        //}
+
+        // Constructor that accepts DbContextOptions<EFCoreDbContext> as a parameter.
+        public EFCoreDbContext(DbContextOptions<EFCoreDbContext> options) : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

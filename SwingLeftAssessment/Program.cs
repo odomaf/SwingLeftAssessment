@@ -12,7 +12,7 @@ var connectionString =
         ?? throw new InvalidOperationException("Connection string"
         + "'DefaultConnection' not found.");
 
-builder.Services.AddDbContext<EFCoreDbContext>(options =>
+builder.Services.AddDbContext<EFCoreDbContext> (options =>
     options.UseNpgsql(connectionString));
 
 var app = builder.Build();
