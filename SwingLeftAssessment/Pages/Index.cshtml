@@ -1,13 +1,36 @@
 ﻿@page
+@using SwingLeftAssessment.Models;
 @model IndexModel
+
 @{
     ViewData["Title"] = "Home page";
 }
+<header>
 
-<div class="text-center">
+</header>
+<main>
+  <h4>Registration Deadlines</h4>
+
+  <table>
+    <tr>
+      <th>State</th>
+      <th>Deadline</th>
+    </tr>
+    @foreach (voter_registration_deadlines deadline in Model.deadlines)
+    {
+      <tr>
+        <td>@deadline.state</td>
+        <td>@deadline.deadlineinperson</td>
+      </tr>
+    }
+  </table>
+</main>
+
+
+@* <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p id="greeting">Learn a lot about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <button onClick="HelloWorld()"></button>
-</div>
+    <button onClick="HelloWorld()">Change Greeting</button>
+</div> *@
 
 

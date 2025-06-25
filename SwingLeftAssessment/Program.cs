@@ -1,7 +1,8 @@
 
 
 using Microsoft.EntityFrameworkCore;
-using SwingLeftAssessment.Entities;
+using SwingLeftAssessment;
+using SwingLeftAssessment.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,7 @@ var connectionString =
         ?? throw new InvalidOperationException("Connection string"
         + "'DefaultConnection' not found.");
 
-builder.Services.AddDbContext<EFCoreDbContext> (options =>
+builder.Services.AddDbContext<SRDContext> (options =>
     options.UseNpgsql(connectionString));
 
 var app = builder.Build();
