@@ -30,11 +30,11 @@ public partial class StateRegistrationDeadlinesContext : DbContext
             entity.ToTable("voter_registration_deadlines");
 
             entity.Property(e => e.State)
-                .HasMaxLength(50)
-                .HasColumnName("state");
-            entity.Property(e => e.Deadlineinperson)
-                .HasMaxLength(50)
-                .HasColumnName("deadlineinperson");
+                //.HasMaxLength(50)
+                .HasColumnName("State");
+            entity.Property(e => e.DeadlineInPerson)
+                //.HasMaxLength(50)
+                .HasColumnName("DadlineInPerson");
         });
 
         OnModelCreatingPartial(modelBuilder);
