@@ -1,8 +1,13 @@
 {
   "dependencies": {
     "csv-parser": "^3.2.0",
-    "node-modules": "^1.0.1",
+    "datatables.net-dt": "^2.3.2",
+    "jquery": "^3.7.1",
+    "node-modules": "^0.0.1",
     "pg": "^8.16.2",
     "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "eslint": "^9.29.0"
   }
 }

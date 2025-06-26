@@ -5,32 +5,35 @@
 @{
   ViewData["Title"] = "Home page";
 }
-<header>
 
-</header>
 <main>
-
-  <table>
-  <tr>
-    <th>State</th>
-    <th>In Person</th>
-    <th>By Mail</th>
-    <th>Online</th>
-    <th>Election Day Registration</th>
-    <th>Online Registration Link</th>
-    <th>Description</th>
-  </tr>
-  @foreach (voter_registration_deadlines deadline in Model.deadlines)
-  {
-    <tr>
-      <td class='nowrap'>@deadline.State</td>
-      <td class='nowrap'>@deadline.DeadlineInPerson</td>
-      <td class='nowrap'>@deadline.DeadlineByMail</td>
-      <td class='nowrap'>@(!(String.IsNullOrEmpty(deadline.DeadlineOnline)) ? @deadline.DeadlineOnline : "Unavailable")</td>
-      <td>@deadline.ElectionDayRegistration</td>
-      <td class='nowrap'><a href='@deadline.OnlineRegistrationLink'>@deadline.State Online Registration</a></td>
-      <td>@deadline.Description</td>
-    </tr>
-  }
+@*   <h1 id="greeting">Heyo!</h1>
+  <button onclick="HelloWorld()">Change greeting</button> *@
+  <table id="deadlinesTable">
+    <thead>
+      <tr>
+        <th>State</th>
+        <th>In Person</th>
+        <th>By Mail</th>
+        <th>Online</th>
+        <th>Election Day Registration</th>
+        <th>Online Registration Link</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (voter_registration_deadlines deadline in Model.deadlines)
+      {
+        <tr>
+          <td class='nowrap'>@deadline.State</td>
+          <td class='nowrap'>@deadline.DeadlineInPerson</td>
+          <td class='nowrap'>@deadline.DeadlineByMail</td>
+          <td class='nowrap'>@(!(String.IsNullOrEmpty(deadline.DeadlineOnline)) ? @deadline.DeadlineOnline : "Unavailable")</td>
+          <td>@deadline.ElectionDayRegistration</td>
+          <td class='nowrap'><a href='@deadline.OnlineRegistrationLink'>@deadline.State Online Registration</a></td>
+          <td>@deadline.Description</td>
+        </tr>
+      }
+    </tbody>
   </table>
 </main>
