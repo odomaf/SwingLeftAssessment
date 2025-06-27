@@ -9,12 +9,17 @@ function InitializeDatatable() {
   const target = document.getElementById('greeting');
   target.innerHTML = "I just loaded";
   let table = new DataTable('#deadlinesTable', {
+    processing: true,
     paging: false,
     searching: false,
-    ordering: true
-  });
-
-  
+    autoWidth: true,
+    ordering: {
+      indicators: false,
+      handler: false
+    },
+    order: [[1, 'asc']],
+    columnControl: ['order', ['orderAsc', 'orderDesc', 'orderAddAsc', 'orderAddDesc']]
+  }); 
 }
 function HelloWorld() {
   const target = document.getElementById('greeting');

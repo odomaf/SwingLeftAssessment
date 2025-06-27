@@ -34,24 +34,36 @@ main {
   margin: auto;
 }
 
+
 table {
    
 }
 
 th {
-    background-color: blue;
-    color: white;
-    text-align: center;
+    background-color: lightgray;
+    border: 1px solid black;
 }
+
+table.dataTable th.dt-type-date div.dt-column-header {
+  flex-direction: row;
+}
+
+/*th div.dt-column-header span.dt-column-title {
+  color: red;
+}
+th div.dt-column-header span.dtcc {
+  background-color: blue;
+}*/
+
 td {
   margin: 10px;
   padding: 20px;
-  background-color: lightblue;
   border: 1px solid;
   max-width: 100%;
+  text-align: left;
 }
 
-  td.nowrap {
+/*  td.nowrap {
     white-space: nowrap;
-  }
+  }*/
   
