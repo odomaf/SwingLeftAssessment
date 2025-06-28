@@ -20,6 +20,15 @@
         <th>Online Registration Link</th>
         <th>Description</th>
       </tr>
+      <tr>
+        <td>Filter By State</td>
+        <td>Filter By Deadline In Person</td>
+        <td>Filter By Deadline By Mail</td>
+        <td>Filter By Deadline Online</td>
+        <td>Filter By Election Day Registration</td>
+        <td>Filter By Online Registration Link</td>
+        <td>Filter By Description</td>
+      </tr>
     </thead>
     <tbody>
       @foreach (voter_registration_deadlines deadline in Model.deadlines)
@@ -35,5 +44,16 @@
         </tr>
       }
     </tbody>
+    <tfoot>
+      <tr>
+        <th>State</th>
+        <th>Deadline In Person</th>
+        <th>Deadline By Mail</th>
+        <th>Deadline Online</th>
+        <th>Election Day Registration</th>
+        <th>Online Registration Link</th>
+        <th>Description</th>
+      </tr>
+    </tfoot>
   </table>
 </main>

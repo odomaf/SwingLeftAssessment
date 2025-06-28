@@ -23,7 +23,7 @@ namespace SwingLeftAssessment.Pages
         //    _logger = logger;
         //}
 
-        public async void OnGet()
+        public void OnGet()
         {
             deadlines = this.Context.voter_registration_deadlines.ToList();
         }
