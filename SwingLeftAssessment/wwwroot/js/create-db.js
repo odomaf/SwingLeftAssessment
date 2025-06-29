@@ -40,7 +40,7 @@ const sequelize = new Sequelize(
 );
 
 const VoterRegistrationDeadline = sequelize.define(
-    "VoterRegistrationDeadline",
+    "voter_registration_deadlines",
     {
         State: { type: DataTypes.STRING, primaryKey: true },
         DeadlineInPerson: DataTypes.STRING,
