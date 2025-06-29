@@ -8,9 +8,10 @@
   "author": "",
   "type": "commonjs",
   "scripts": {
+    "dev": "dotnet run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:create-db": "node ./scripts/create-db.js",
-    "db:drop-db": "node ./scripts/drop-db.js"
+    "db:create-db": "node ./wwwroot/js/create-db.js",
+    "db:drop-db": "node ./wwwroot/js/create-db.js"
   },
   "dependencies": {
     "csv-parser": "^3.2.0",
