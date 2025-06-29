@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    /*border: solid 1px red;*/
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+h1{
+  text-align: center;
+}
+
+main {
+  width: 95%;
+  margin: auto;
+}
+
+
+table {
+   
+}
+
+th {
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
+table.dataTable th.dt-type-date div.dt-column-header {
+  flex-direction: row;
+}
+
+/*th div.dt-column-header span.dt-column-title {
+  color: red;
+}
+th div.dt-column-header span.dtcc {
+  background-color: blue;
+}*/
+
+td {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid;
+  max-width: 100%;
+  text-align: left;
+}
+
+/*  td.nowrap {
+    white-space: nowrap;
+  }*/
+  
