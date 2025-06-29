@@ -1,8 +1,10 @@
 
 
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using SwingLeftAssessment;
 using SwingLeftAssessment.Models;
+using SwingLeftAssessment.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ var connectionString =
 
 builder.Services.AddDbContext<SRDContext> (options =>
     options.UseNpgsql(connectionString));
+
+builder.Services.AddTransient<Ivoter_registration_deadlines_service, voter_registration_deadlines_service>(); 
 
 var app = builder.Build();
 

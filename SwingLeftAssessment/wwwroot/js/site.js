@@ -12,14 +12,16 @@ function InitializeDatatable() {
   $('#deadlinesTable thead td').each(function (i) {
     //add a text om[it tp each footer cell]
     let title = $('#deadlinesTable thead td').eq($(this).index()).text();
-    $(this).html('<input "type="text" placeholder="' + title + '" data-index="' + i + '" />');
+    $(this).html('<input "type=text placeholder="' + title + '" data-index="' + i + '" />');
   });
   
   //Datatable
   let table = new DataTable('#deadlinesTable', {
     processing: true,
     paging: false,
-    searching: false,
+    layout: {
+      topEnd: null
+    },
     autoWidth: true,
     ordering: {
       indicators: false,
@@ -38,8 +40,24 @@ function InitializeDatatable() {
   });
 }
 
+$(function() {
+  let loadDeadlines = function () {
+
+   // $(#deadlineList).empty();
+
+    $.get('apideadlines').done(function (deadlines) {
+
+      $.each(JSON.parse(deadlines), function (i, deadline) {
+        let item = `<li><span><$(deadline.State)</span></li>`;
+        $('#deadline-list').append(item);
+      });
+
+    });
+  }
+  loadDeadlines();
+});
+
 function HelloWorld() {
   const target = document.getElementById('greeting');
   target.innerHTML = "Hello World!";
-
 }
