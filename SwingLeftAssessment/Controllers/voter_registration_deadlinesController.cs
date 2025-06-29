@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using SwingLeftAssessment.Models;
 using SwingLeftAssessment.Services;
 
@@ -21,7 +22,8 @@ namespace SwingLeftAssessment.Controllers
     [HttpGet]
     public IEnumerable<voter_registration_deadlines> Get()
     {
-      return _Registration_Deadlines_Service.ReadAll();
+      IEnumerable < voter_registration_deadlines > deadlines = _Registration_Deadlines_Service.ReadAll();
+      return deadlines;
     }
   }
 }

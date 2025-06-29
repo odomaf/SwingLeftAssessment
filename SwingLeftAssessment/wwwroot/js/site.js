@@ -46,10 +46,11 @@ $(function() {
    // $(#deadlineList).empty();
 
     $.get('apideadlines').done(function (deadlines) {
-
-      $.each(JSON.parse(deadlines), function (i, deadline) {
+      alert('deadlines: ' + deadlines);
+      
+      $.each(deadlines, function (i, deadline) {
         let item = `<li><span><$(deadline.State)</span></li>`;
-        $('#deadline-list').append(item);
+        $('#deadlineList').append(item);
       });
 
     });

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using SwingLeftAssessment.Models;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace SwingLeftAssessment.Services
@@ -20,9 +21,13 @@ namespace SwingLeftAssessment.Services
 
     public List<voter_registration_deadlines> ReadAll()
     {
+      Debug.WriteLine("In the service, reading all");
       if (_cache.Get("DeadlineList") == null)
       {
         List<voter_registration_deadlines> deadlines = Context.voter_registration_deadlines.ToList();
+        foreach (voter_registration_deadlines deadline in deadlines) { 
+          Debug.WriteLine(deadline.ToString());
+        }
         _cache.Set("DeadlineList", deadlines);
       }
       return _cache.Get<List<voter_registration_deadlines>>("DeadlineList");
