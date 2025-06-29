@@ -6,13 +6,13 @@
 document.addEventListener("DOMContentLoaded", InitializeDatatable);
 
 function InitializeDatatable() {
-  const target = document.getElementById('greeting');
-  target.innerHTML = "I just loaded";
+  //const target = document.getElementById('greeting');
+  //target.innerHTML = "I just loaded";
 
   $('#deadlinesTable thead td').each(function (i) {
     //add a text om[it tp each footer cell]
     let title = $('#deadlinesTable thead td').eq($(this).index()).text();
-    $(this).html('<input id="input' + i + '" "type="text" placeholder="' + title + '" data-index="' + i + '" />');
+    $(this).html('<input "type="text" placeholder="' + title + '" data-index="' + i + '" />');
   });
   
   //Datatable
@@ -21,7 +21,6 @@ function InitializeDatatable() {
     paging: false,
     searching: false,
     autoWidth: true,
-    fixedColumns: true,
     ordering: {
       indicators: false,
       handler: false
