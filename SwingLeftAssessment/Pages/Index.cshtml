@@ -7,26 +7,32 @@
 }
 
 <main>
+
 @*   <h1 id="greeting">Heyo!</h1>
   <button onclick="HelloWorld()">Change greeting</button> *@
   <table id="deadlinesTable">
     <thead>
       <tr>
-        <th>State</th>
-        <th>In Person</th>
-        <th>By Mail</th>
-        <th>Online</th>
-        <th>Election Day Registration</th>
-        <th>Online Registration Link</th>
-        <th>Description</th>
+        <th class="state">State</th>
+        <th class="person">In Person</th>
+        <th class="mail">By Mail</th>
+        <th class="online">Online</th>
+        <th class="dayOf">Election Day Registration</th>
+        <th class="regLink">Online Registration Link</th>
+        <th class="description">Description</th>
       </tr>
-      <tr>
+      <!--
+        I'm not confident that having this in thead won't 
+        create issues for screen readers. I did not test with 
+        screen reader for this assessment
+      -->
+      <tr class="filterRow">
         <td>Filter By State</td>
-        <td>Filter By Deadline In Person</td>
-        <td>Filter By Deadline By Mail</td>
-        <td>Filter By Deadline Online</td>
-        <td>Filter By Election Day Registration</td>
-        <td>Filter By Online Registration Link</td>
+        <td>Filter By In Person</td>
+        <td>Filter By Mail</td>
+        <td>Filter By Online</td>
+        <td>Filter By Election Day</td>
+        <td>Filter By Online Link</td>
         <td>Filter By Description</td>
       </tr>
     </thead>
@@ -34,12 +40,12 @@
       @foreach (voter_registration_deadlines deadline in Model.deadlines)
       {
         <tr>
-          <td class='nowrap'>@deadline.State</td>
-          <td class='nowrap'>@deadline.DeadlineInPerson</td>
-          <td class='nowrap'>@deadline.DeadlineByMail</td>
-          <td class='nowrap'>@(!(String.IsNullOrEmpty(deadline.DeadlineOnline)) ? @deadline.DeadlineOnline : "Unavailable")</td>
+          <td>@deadline.State</td>
+          <td>@deadline.DeadlineInPerson</td>
+          <td>@deadline.DeadlineByMail</td>
+          <td>@deadline.DeadlineOnline</td>
           <td>@deadline.ElectionDayRegistration</td>
-          <td class='nowrap'><a href='@deadline.OnlineRegistrationLink'>@deadline.State Online Registration</a></td>
+          <td><a href='@deadline.OnlineRegistrationLink'>@deadline.State Online Registration</a></td>
           <td>@deadline.Description</td>
         </tr>
       }

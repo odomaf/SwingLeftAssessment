@@ -1,19 +1,13 @@
+/*-----------------------
+  Default elements
+  ----------------------- */
+
 * {
     box-sizing: border-box;
-    /*border: solid 1px red;*/
 }
+
 html {
   font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
@@ -34,9 +28,13 @@ main {
   margin: auto;
 }
 
-
-table {
-   width: 90%;
+/*-----------------------
+  Datatable elements
+  ----------------------- */
+table.dataTable { 
+  table-layout: fixed;
+  width: 100%;
+  margin: auto;
 }
 
 th {
@@ -44,16 +42,31 @@ th {
     border: 1px solid black;
 }
 
+/*
+  dataTable default is flex-direction: reverse, 
+  which changes which side of the title the sort buttons
+  are on depending on format of contents. The dt-type-date
+  class makes all sort icons appear to the left of the title
+  while all others show up to the right. It's a mess and
+  non-intuitive to have that inconsistent across headers.
+  Why did they ever think that was a good idae?
+*/
 table.dataTable th.dt-type-date div.dt-column-header {
+  flex-direction: row;
+  text-align: left;
+}
+
+table.dataTable tr.filterRow td {
   flex-direction: row;
 }
 
-/*th div.dt-column-header span.dt-column-title {
-  color: red;
+table.dataTable tr.filterRow td input {
+  width: 100%;
 }
-th div.dt-column-header span.dtcc {
-  background-color: blue;
-}*/
+
+table.dataTable td.dt-type-date {
+  text-align: center;
+}
 
 td {
   margin: 10px;
@@ -63,7 +76,18 @@ td {
   text-align: left;
 }
 
-/*  td.nowrap {
-    white-space: nowrap;
-  }*/
-  
+/*-----------------------
+  Media adjustments
+  ----------------------- */
+@media only screen and (max-width: 1200px) {
+  table.dataTable thead tr th div.dt-column-header {
+    display: block;
+    overflow: clip;
+  }
+  table.dataTable tbody tr td {
+    overflow: clip;
+  }
+}
+
+
+
