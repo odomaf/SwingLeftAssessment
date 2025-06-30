@@ -1,21 +1,18 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿
+//Initialize datatable after content load, or it doesn't work
 document.addEventListener("DOMContentLoaded", InitializeDatatable);
 
 function InitializeDatatable() {
-  //const target = document.getElementById('greeting');
-  //target.innerHTML = "I just loaded";
 
-  $('#deadlinesTable thead td').each(function (i) {
-    //add a text om[it tp each footer cell]
-    let title = $('#deadlinesTable thead td').eq($(this).index()).text();
-    $(this).html('<input "type=text placeholder="' + title + '" data-index="' + i + '" />');
+    //set up filtering row
+  $('#deadlinesTable thead tr.filterRow td').each(function (i) {
+    let title = $('#deadlinesTable thead tr.filterRow td').eq($(this).index()).text();
+    $(this).html('<input type=text placeholder="' + title + '" data-index="' + i + '" />');
   });
   
-  //Datatable
+  //add datatable funcitonality to deadlinesTable
+  //paging is false because this data only has 50 rows,
+  //otherwise, the paging feature of datatables is pretty nice
   let table = new DataTable('#deadlinesTable', {
     processing: true,
     paging: false,
@@ -28,37 +25,19 @@ function InitializeDatatable() {
       handler: false
     },
     order: [[0, 'asc']],
+    //columnControl sets the options for what kind of sorting is allowed
+    //'orderAddAsc and orderAddDesc allow for sorting by one column
+    //then doing a secondary sort with another column
     columnControl: ['order', ['orderAsc', 'orderDesc', 'orderAddAsc', 'orderAddDesc']]
   });
 
   //Filter event handler
+  //Note: this could be change to a dropdown list. I chose a searchable
+  //filter because it also allowed nice filtering on the content of description.
   $(table.table().container()).on('keyup', 'thead input', function () {
     table
       .column($(this).data('index'))
       .search(this.value)
       .draw();
   });
-}
-
-$(function() {
-  let loadDeadlines = function () {
-
-   // $(#deadlineList).empty();
-
-    $.get('apideadlines').done(function (deadlines) {
-      alert('deadlines: ' + deadlines);
-      
-      $.each(deadlines, function (i, deadline) {
-        let item = `<li><span><$(deadline.State)</span></li>`;
-        $('#deadlineList').append(item);
-      });
-
-    });
-  }
-  loadDeadlines();
-});
-
-function HelloWorld() {
-  const target = document.getElementById('greeting');
-  target.innerHTML = "Hello World!";
 }

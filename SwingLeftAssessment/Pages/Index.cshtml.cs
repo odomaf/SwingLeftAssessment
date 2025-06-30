@@ -14,15 +14,12 @@ namespace SwingLeftAssessment.Pages
         private SRDContext Context { get; }
         public List<voter_registration_deadlines> deadlines { get; set; } = new List<voter_registration_deadlines>();
 
-        public IndexModel(SRDContext _context)
+        public IndexModel(SRDContext _context, ILogger<IndexModel> logger)
         {
             this.Context = _context;
+            _logger = logger;
         }
-        //public IndexModel(ILogger<IndexModel> logger, Database database)
-        //{
-        //    _logger = logger;
-        //}
-
+        //get deadline information from database
         public void OnGet()
         {
             deadlines = this.Context.voter_registration_deadlines.ToList();
